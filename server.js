@@ -7,6 +7,9 @@ var PORT=process.env.PORT||3000
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// set your static files
+app.use(express.static(__dirname + '/public'));
+
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set('views', path.join(__dirname, 'views'));

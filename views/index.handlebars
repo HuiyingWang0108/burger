@@ -1,2 +1,35 @@
-{{!-- <img src="./../public/assets/img/burger.jpg"> --}}
-<img src="https://media.giphy.com/media/ToMjGplHPoYqSg7oACc/giphy.gif" alt="" style="max-width: 500px" />
+<div class="jumbotron">
+    <div class="container">
+        <p class="text-center burgerName">Eat-Da-Burger!</p>
+        <img class="tocenter" src="assets/img/burger.jpg">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-right">
+                {{#each burgers}}
+                {{#unless this.devoured}}
+                <input class="text-center" type="text" placeholder='{{this.id}}. {{this.burger_name}}' size="30">
+                <input type="button" value="Devour it!" id="{{this.id}}">
+                {{/unless}}
+                {{/each}}
+            </div>
+            <div class="col-6 text-left">
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <input class="text-center" type="text" placeholder='{{this.id}}. {{this.burger_name}}' size="30">
+                <input type="button" value="Devour it!" id="{{this.id}}">
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <input id="burgerInput" type="text" size="35">
+                <div class="w-100"></div>
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <div class="w-100"></div>
+                <label>Enter a burger you want to eat click the "submit" button</label>
+            </div>
+        </div>
+    </div>
+</div>
