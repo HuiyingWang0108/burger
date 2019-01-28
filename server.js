@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // set your static files
+
 app.use(express.static(__dirname + '/public'));
 
 var exphbs = require("express-handlebars");

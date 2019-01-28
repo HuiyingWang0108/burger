@@ -9,15 +9,15 @@
                 {{#each burgers}}
                 {{#unless this.devoured}}
                 <input class="text-center" type="text" placeholder='{{this.id}}. {{this.burger_name}}' size="30">
-                <input type="button" value="Devour it!" id="{{this.id}}">
+                <input class="devour" type="button" value="Devour it!" id="{{this.id}}">
                 {{/unless}}
                 {{/each}}
             </div>
             <div class="col-6 text-left">
                 {{#each burgers}}
                 {{#if this.devoured}}
-                <input class="text-center" type="text" placeholder='{{this.id}}. {{this.burger_name}}' size="30">
-                <input type="button" value="Devour it!" id="{{this.id}}">
+                <input class="text-center burgerItem" type="text" placeholder='{{this.id}}. {{this.burger_name}}' size="30">
+                <input class="devour" type="button" value="Devour it!" id="{{this.id}}">
                 {{/if}}
                 {{/each}}
             </div>

@@ -14,24 +14,41 @@
     {{{body}}}
     <!-- jQuery -->.
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="">
+    <script>
+        function getBurgers(){
+            $.get("/api/new",function(data){
+                console.log("data------",data);
+            })
+        }
         $(".btn").on("click", function (event) {
             console.log("----------click---------");
-            event.preventDefault();
-
+            {{!-- event.preventDefault(); --}}
             var burgerNew = {
-                burger_name: $('#burgerInput').val().trim();
+                burger_name: $('#burgerInput').val().trim()
             };
+            
             // send an AJAX POST-request with jQuery
-            $.post("/api/new", burgerNew)
-                // on success, run this callback
-                .then(function (data) {
-                    // log the data we found
-                    console.log(data);
-                    // tell the user we're adding a character with an alert window
-                    alert("Adding burger...");
-                });
+            /*
+            var burgerItem = $("<input>");
+            var submit = $("<input>");
+            burgerItem.attr("placeholder", burgerNew.burger_name);
+            submit.attr("type", "button");
+            submit.attr("value", "Devour it!");
+            $(".col-6 .text-left").append(burgerItem);
+            $(".col-6 .text-left").append(submit);
+            */
+            {{!-- $.post("/api/new", burgerNew,getBurgers); --}}
+            $.post("/api/new", burgerNew);
 
+        });
+        $(".devour").on("click", function (event) {
+            {{!-- event.preventDefault(); --}}
+             console.log("----------click---------");
+            var burger = {
+                id: this.id
+            };
+            console.log("id: ", burger.id);
+            $.post("api/update", burger);
         });
     </script>
 </body>
