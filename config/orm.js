@@ -14,6 +14,8 @@ var orm = {
         connection.query(queryString, [tableInput, colToAdd, valOfCol], function (err, result) {
             if (err) throw err;
             cb(result);
+            console.log("**2****",cb);
+
         });
     },
     updateOne: function (tableInput, colToUppdate, valOfCol, id,cb) {

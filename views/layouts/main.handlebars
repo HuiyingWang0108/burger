@@ -15,18 +15,18 @@
     <!-- jQuery -->.
     <script src="https://code.jquery.com/jquery.js"></script>
     <script>
-        function getBurgers(){
-            $.get("/api/new",function(data){
-                console.log("data------",data);
+        function getBurgers() {
+            $.get("/api/new", function (data) {
+                console.log("data------", data);
             })
         }
         $(".btn").on("click", function (event) {
             console.log("----------click---------");
-            {{!-- event.preventDefault(); --}}
+            event.preventDefault();
             var burgerNew = {
                 burger_name: $('#burgerInput').val().trim()
             };
-            
+
             // send an AJAX POST-request with jQuery
             /*
             var burgerItem = $("<input>");
@@ -37,18 +37,23 @@
             $(".col-6 .text-left").append(burgerItem);
             $(".col-6 .text-left").append(submit);
             */
-            {{!-- $.post("/api/new", burgerNew,getBurgers); --}}
-            $.post("/api/new", burgerNew);
+            $.post("/api/new", burgerNew).then(function () {
+                //refresh the page
+                location.reload();
+            });
 
         });
         $(".devour").on("click", function (event) {
-            {{!-- event.preventDefault(); --}}
-             console.log("----------click---------");
+            event.preventDefault();
+            console.log("----------click---------");
             var burger = {
                 id: this.id
             };
             console.log("id: ", burger.id);
-            $.post("api/update", burger);
+            $.post("api/update", burger).then(function () {
+                //refresh the page
+                location.reload();
+            });
         });
     </script>
 </body>

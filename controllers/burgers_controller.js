@@ -26,7 +26,8 @@ burger_router.get('/index', function (req, res) {
 });
 burger_router.post("/api/new", function (req, res) {
     console.log("req.body:", req.body);
-    burgers.insertOne(req.body.burger_name, function (data) {
+    burgers.insertOne(req.body.burger_name, function (err,data) {
+        // if(err) throw err;
         res.redirect('/index');
     });
     // //nothing happen ?

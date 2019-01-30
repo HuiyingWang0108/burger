@@ -8,6 +8,7 @@ var burger = {
     insertOne: function (valOfCol, cb) {
         orm.insertOne("burgers", "burger_name", valOfCol, function (res) {
             cb(res);
+            console.log("***1***",cb);
         });
     },
     updateOne: function (id,cb) {
